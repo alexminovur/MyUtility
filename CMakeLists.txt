@@ -9,6 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(MyUtility
     src/main.cpp
     src/VideoJob.cpp
+    src/Downloader.cpp
 )
 
 target_include_directories(MyUtility PRIVATE include)

@@ -1,9 +1,7 @@
+#pragma once
+
 #include<string>
-
-#ifndef VIDEO_HPP
-#define VIDEO_HPP
-#endif
-
+#include<filesystem>
 
 enum class Status {
     Pending,
@@ -23,12 +21,12 @@ class VideoJob {
 private:
     std::string url;
     std::string title;
-    std::string dir;
-    std::string pathToVideo;
-    std::string pathToText;
+    std::string id;
+    std::filesystem::path jobDir;
     Status status = Status::Pending;
-    TaskType tasktype = TaskType::Download;
+    TaskType taskType = TaskType::Download;
 
+    std::string extractVideoId(const std::string& url);
 public:
     VideoJob(const std::string& newUrl);
 
@@ -36,15 +34,19 @@ public:
     const std::string& getUrl();
     void setUrl (const std::string& newUrl);
 
-    const std::string& getDir();
-    void setDir(const std::string& newDir);
-    
-    const std::string& getPathToVideo();
-    void setPathToVideo(const std::string& newPathToVideo);
-    
-    const std::string& getPathToText();
-    void setPathToText(const std::string& newPathToText);
+    const std::string& getTitle();
+    void setTitle (const std::string& newTitle);
 
+    const std::string& getId();
+    void setId(const std::string& newId);
+    
+    const std::filesystem::path& getJobDir();
+    void setJobDir (const std::filesystem::path& newJobDir);
+   
     const Status& getStatus();
+    void setStatus (const Status& newStatus);
+
+    const TaskType& getTaskType();
+    void setTaskType(const TaskType& newTaskType);
 };
 
