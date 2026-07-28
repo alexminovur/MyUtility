@@ -10,6 +10,11 @@ constexpr const char* kFormat = "bv*[height<=720][vcodec^=avc1]+ba[acodec^=mp4a]
 void Downloader::download (VideoJob& job) {
     std::filesystem::create_directories(job.getJobDir());
 
+    if (std::filesystem::exists(job.getJobDir() / "video.mp4")) {
+        std::cout << "Already downloaded!" << '\n';
+        return;
+    }
+
     std::string command = "yt-dlp ";
     command += "--cookies-from-browser ";
     command += kCookies;
