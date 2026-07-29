@@ -13,6 +13,7 @@ add_executable(MyUtility
     src/Downloader.cpp
     src/AudioExtractor.cpp
     src/Transcriber.cpp
+    src/MyUtility.cpp
 )
 
 target_include_directories(MyUtility PRIVATE include)

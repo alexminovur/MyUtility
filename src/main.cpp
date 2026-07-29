@@ -1,30 +1,17 @@
-#include<string>
-#include "VideoJob.hpp"
-#include"Downloader.hpp"
-#include"AudioExtractor.hpp"
-#include"Transcriber.hpp"
+#include <string>
+#include <iostream>
+#include "MyUtility.hpp"
+int main(int argc, char* argv[]) { 
+    std::string url;
 
-int main() { 
-    VideoJob job("NoneURL");
-    std::cout << job.getId() << '\n' << job.getJobDir() << '\n';
-    Downloader downloader;
-    downloader.download(job);
+    if (argc > 1) {
+        url = argv[1];
+    }
+    else {
+        std::cout << "URL: ";
+        std::getline(std::cin, url);
+    }
 
-    int x = 0;
-    std::cout << "Audio need?" << '\n' << "[1/0]";
-    std::cin >> x;
-    if (x) {
-        AudioExtractor audioExtractor;
-        audioExtractor.audioExtract(job);
-    }
-    int y = 0;
-    std::cout << "Transcribe need?" << '\n' << "[1/0]";
-    std::cin >> y;
-    if (y) {
-        Transcriber transcribe;
-        transcribe.split(job);
-        transcribe.transcribeChunks(job);
-        transcribe.merge(job);
-    }
-    return 0;
+    MyUtility app;
+    app.process(url);
 }

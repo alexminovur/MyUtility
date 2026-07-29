@@ -1,16 +1,12 @@
-#include<iostream>
 #include<string>
-
 #include "VideoJob.hpp"
 
 
-VideoJob::VideoJob(const std::string& newUrl) {
-    std::cout << "Im ready!" << '\n';
-    std::cout << "Input URL: "; std::cin >> url;
-    std::cout << "URL = " << url;
-    
-    id = extractVideoId(url);
-    jobDir = std::filesystem::path("workspace") / "jobs" / id;
+VideoJob::VideoJob(const std::string& newUrl)
+    : url(newUrl)
+    , id(extractVideoId(url))
+    , jobDir(std::filesystem::path("workspace") / "jobs" / id)
+{
 }
 
 std::string VideoJob::extractVideoId(const std::string& url) {
