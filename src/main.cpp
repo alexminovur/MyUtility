@@ -2,6 +2,7 @@
 #include "VideoJob.hpp"
 #include"Downloader.hpp"
 #include"AudioExtractor.hpp"
+#include"Transcriber.hpp"
 
 int main() { 
     VideoJob job("NoneURL");
@@ -16,6 +17,14 @@ int main() {
         AudioExtractor audioExtractor;
         audioExtractor.audioExtract(job);
     }
-    
+    int y = 0;
+    std::cout << "Transcribe need?" << '\n' << "[1/0]";
+    std::cin >> y;
+    if (y) {
+        Transcriber transcribe;
+        transcribe.split(job);
+        transcribe.transcribeChunks(job);
+        transcribe.merge(job);
+    }
     return 0;
 }

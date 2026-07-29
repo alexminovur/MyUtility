@@ -12,6 +12,7 @@ add_executable(MyUtility
     src/VideoJob.cpp
     src/Downloader.cpp
     src/AudioExtractor.cpp
+    src/Transcriber.cpp
 )
 
 target_include_directories(MyUtility PRIVATE include)
