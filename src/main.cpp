@@ -1,17 +1,15 @@
 #include <string>
 #include <iostream>
 #include "MyUtility.hpp"
+#include <QApplication>
+#include "MainWindow.hpp"
+
 int main(int argc, char* argv[]) { 
-    std::string url;
+    QApplication app(argc, argv);
 
-    if (argc > 1) {
-        url = argv[1];
-    }
-    else {
-        std::cout << "URL: ";
-        std::getline(std::cin, url);
-    }
+    MainWindow window;
 
-    MyUtility app;
-    app.process(url);
+    window.show();
+
+    return app.exec();
 }
