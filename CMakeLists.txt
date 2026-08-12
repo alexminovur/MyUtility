@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_MACOSX_BUNDLE ON)
 
@@ -18,11 +19,14 @@ add_executable(MyUtility
         src/AudioExtractor.cpp
         src/Transcriber.cpp
         src/MyUtility.cpp
-        src/MainWindow.cpp
-        src/MainWindow.cpp
+
+        gui/MainWindow.cpp
         include/MainWindow.hpp
 )
 
-target_include_directories(MyUtility PRIVATE include)
+target_include_directories(MyUtility PRIVATE
+        include
+        gui
+)
 
 target_link_libraries(MyUtility PRIVATE Qt6::Widgets)

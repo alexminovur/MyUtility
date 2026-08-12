@@ -1,21 +1,28 @@
-//
-// Created by Леша Минов on 29.07.2026.
-//
-
 #pragma once
+
 #include <QMainWindow>
+#include <QLineEdit>
+#include <QLabel>
+#include <QComboBox>
+#include <QPushButton>
+#include <QCheckBox>
 
-class QLabel;
-class QPushButton;
-
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
+class MainWindow : public QMainWindow {
 public:
-    explicit MainWindow(QWidget* parent = nullptr);
-    private slots:
-        void buttonClicked();
+    MainWindow();
+
 private:
-    QLabel* label;
-    QPushButton* button;
+    void setupUi();
+    void setupConnections();
+
+    QLabel mainLabel_;
+    QLineEdit urlInput_;
+
+    QComboBox qualityBox_;
+    QComboBox outputFormatBox_;
+
+    QCheckBox audioOnlyCheckBox_;
+    QCheckBox subtitlesCheckBox_;
+
+    QPushButton downloadButton_;
 };
